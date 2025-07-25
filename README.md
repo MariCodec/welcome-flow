@@ -17,4 +17,4 @@
 
 ## 📱 Live Demo
 
-[👀 Переглянути демо](https://MariCodec.github.io/welcome-flow)
+[👀 Переглянути демо](https://welcome-flow-psi.vercel.app/)
