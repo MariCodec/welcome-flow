@@ -1,0 +1,105 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  @include title-style;
+}
+.subtitle {
+  @include subtitle-style;
+  margin-bottom: 16px;
+}
+
+.form {
+  margin-bottom: 16px;
+}
+.visuallyHidden {
+  @include visuallyHidden;
+}
+.range {
+  display: flex;
+  justify-content: center;
+  gap: 0 8px;
+}
+.rangeFieldset,
+.dateFieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.date {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.rangeSelect {
+  @include background-icon;
+  width: 140px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 16px;
+  border-radius: 16px;
+  padding-left: 16px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: $color-text-main;
+  appearance: none;
+}
+.select {
+  @include input-base;
+  @include background-icon;
+  margin-bottom: 0px;
+  appearance: none;
+}
+.description {
+  @include description-style;
+}
+
+@media (min-width: 375px) {
+  .rangeSelect {
+    width: 167px;
+  }
+  .select {
+    width: 343px;
+  }
+  .description {
+    width: 345px;
+  }
+}
+@media (orientation: landscape) {
+  .rangeSelect {
+    width: 196px;
+  }
+  .select {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 744px) {
+  .rangeSelect {
+    width: 196px;
+    margin-bottom: 24px;
+  }
+  .date {
+    flex-direction: row;
+  }
+  .select {
+    width: 128px;
+  }
+  .description {
+    width: 400px;
+  }
+}
+@media (min-width: 1440px) {
+  .rangeSelect {
+    margin-bottom: 32px;
+  }
+}

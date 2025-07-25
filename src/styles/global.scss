@@ -1,0 +1,17 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $bg-main-gradient;
+  min-height: 100vh;
+  color: $color-text-main;
+  font-family: $font-main;
+  padding-inline: 16px;
+}

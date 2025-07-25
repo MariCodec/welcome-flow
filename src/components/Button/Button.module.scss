@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+
+.nextBtn {
+  @include button-base;
+
+  @media (min-width: 375px) {
+    @include button-base(343px);
+  }
+  @media (orientation: landscape) and (min-width: 375px) {
+    @include button-base(400px);
+  }
+  @media (min-width: 744px) {
+    @include button-base(400px);
+  }
+}

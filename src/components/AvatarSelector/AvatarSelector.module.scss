@@ -1,0 +1,156 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $color-text-main;
+}
+
+.title {
+  @include title-style;
+}
+
+.imageGallery {
+  width: 288px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sliderContainer {
+    width: 720px;
+    display: flex;
+    gap: 8px;
+
+    .imageItem {
+      width: 80px;
+      height: 80px;
+      scroll-snap-align: center;
+
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.genders {
+  text-align: center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectSex {
+  @include subtitle-style;
+  margin-bottom: 8px;
+}
+
+.genderButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0 16px;
+  margin-bottom: 16px;
+}
+
+.gender {
+  @include choose-button;
+  img {
+    position: relative;
+    top: -4px;
+  }
+}
+.footer {
+  position: absolute;
+  top: 485px;
+  padding: 16px;
+  margin: 0 auto;
+
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .linksList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .link {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-text-main;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (min-width: 375px) {
+  .imageGallery {
+    width: 343px;
+  }
+
+  .genders {
+    width: 343px;
+  }
+  .gender {
+    height: 124px;
+  }
+}
+
+@media (min-width: 744px) {
+  .genders {
+    margin-bottom: 24px;
+  }
+
+  .imageGallery {
+    width: 400px;
+    margin-bottom: 24px;
+  }
+  .genderButtons {
+    margin-bottom: 0px;
+  }
+  .gender {
+    height: 140px;
+
+    img {
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  .footer {
+    top: 1055px;
+  }
+}
+
+@media (min-width: 744px) and (orientation: landscape) {
+  .footer {
+    top: 692px;
+  }
+}
+@media (min-width: 1440px) {
+  .footer {
+    top: 830px;
+  }
+}

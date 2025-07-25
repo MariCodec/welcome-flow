@@ -1,0 +1,49 @@
+@import "../../styles/mixins";
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // margin-bottom: 16px;?
+  padding: 8px 0px;
+  margin-bottom: 8px;
+}
+.buttonStyle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.description {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  display: none;
+  text-shadow: 0px 4px 4px rgba(53, 53, 56, 0.25);
+}
+.signIn {
+  @include signIn-button;
+}
+.logoCentered {
+  width: 139px;
+  height: 40px;
+  margin: 0 auto;
+}
+@media (orientation: landscape) {
+  .topBar {
+    margin-bottom: 8px;
+    // margin-bottom: 16px;
+  }
+}
+@media (min-width: 744px) {
+  .topBar {
+    margin-bottom: 24px;
+  }
+}
+@media (min-width: 1440px) {
+  .topBar {
+    padding-inline: 24px;
+    margin-bottom: 32px;
+  }
+  .description {
+    display: block;
+  }
+}

@@ -1,0 +1,98 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $color-text-main;
+}
+
+.title {
+  @include title-style;
+}
+
+.preferContent {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  @include subtitle-style;
+}
+.description {
+  @include description-style;
+  line-height: 20px;
+}
+
+.preferButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0 16px;
+  margin-bottom: 16px;
+}
+
+.preferButton {
+  @include choose-button;
+  span {
+    font-size: 16px;
+  }
+  height: 119px;
+}
+.visuallyHidden {
+  @include visuallyHidden;
+}
+.input {
+  @include input-base;
+  &::placeholder {
+    color: $color-placeholder;
+  }
+}
+@media (min-width: 375px) {
+  .preferButton {
+    width: 160px;
+    height: 119px;
+  }
+  .input {
+    width: 343px;
+  }
+}
+@media (orientation: landscape) {
+  .input {
+    width: 400px;
+  }
+}
+@media (min-width: 744px) {
+  .title {
+    width: 600px;
+  }
+  .genders {
+    margin-bottom: 24px;
+  }
+
+  .preferButtons {
+    gap: 0 24px;
+    margin-bottom: 24px;
+  }
+  .preferButton {
+    height: 135px;
+    img {
+      width: 96px;
+      height: 96px;
+    }
+  }
+  .input {
+    width: 400px;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .preferButtons {
+    margin-bottom: 32px;
+  }
+}
