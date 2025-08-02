@@ -6,14 +6,6 @@ import trendyImg from "../../assets/trendy-mobile@2x.png";
 import trendyImgTablet from "../../assets/trendy-tablet@2x.png";
 
 const ContentPreference = ({ value, typeContentValue, onSelect, onChange }) => {
-  const handleSelect = (typeContent) => {
-    onSelect(typeContent);
-  };
-
-  const handleChange = (e) => {
-    onChange(e.target.value);
-  };
-
   const isSelected = (typeContent) => typeContentValue === typeContent;
 
   return (
@@ -26,7 +18,7 @@ const ContentPreference = ({ value, typeContentValue, onSelect, onChange }) => {
             className={`${styles.preferButton} ${
               isSelected("hot") ? styles.active : ""
             }`}
-            onClick={() => handleSelect("hot")}
+            onClick={() => onSelect("hot")}
             aria-pressed={isSelected("hot")}
           >
             <img
@@ -41,7 +33,7 @@ const ContentPreference = ({ value, typeContentValue, onSelect, onChange }) => {
             className={`${styles.preferButton} ${
               isSelected("Trendy") ? styles.active : ""
             }`}
-            onClick={() => handleSelect("Trendy")}
+            onClick={() => onSelect("Trendy")}
             aria-pressed={isSelected("Trendy")}
           >
             <img
@@ -63,7 +55,7 @@ const ContentPreference = ({ value, typeContentValue, onSelect, onChange }) => {
         type="email"
         className={styles.input}
         value={value}
-        onChange={handleChange}
+        onChange={(e) => onChange(e.target.value)}
         placeholder="Type your email"
       />
       <p className={styles.description}>Email is required for registration.</p>

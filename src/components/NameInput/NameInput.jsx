@@ -1,9 +1,6 @@
 import styles from "./NameInput.module.scss";
 
 const NameInput = ({ value, onChange }) => {
-  const handleChange = (e) => {
-    onChange(e.target.value);
-  };
 
   return (
     <section className={styles.wrapper}>
@@ -16,10 +13,11 @@ const NameInput = ({ value, onChange }) => {
         type="text"
         className={styles.input}
         value={value}
-        onChange={handleChange}
+        onChange={(e) => onChange(e.target.value)}
         placeholder="Type your username"
+        aria-describedby="username-description"
       />
-      <p className={styles.description}>
+      <p id="username-description" className={styles.description}>
         You don’t have to use your real name – feel free to use a nickname. You
         can change it anytime.
       </p>

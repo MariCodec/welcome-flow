@@ -15,9 +15,7 @@ import maleImgTablet from "../../assets/male-tablet@2x.png";
 import CookieNotice from "../CookieNotice/CookieNotice";
 
 const AvatarSelector = ({ value, onSelect }) => {
-  const handleSelect = (gender) => {
-    onSelect(gender);
-  };
+
 
   const isSelected = (gender) => value === gender;
   const images = [
@@ -53,7 +51,7 @@ const AvatarSelector = ({ value, onSelect }) => {
               className={`${styles.gender} ${
                 isSelected("male") ? styles.active : ""
               }`}
-              onClick={() => handleSelect("male")}
+              onClick={() => onSelect("male")}
               aria-pressed={isSelected("male")}
             >
               <img
@@ -69,7 +67,7 @@ const AvatarSelector = ({ value, onSelect }) => {
               className={`${styles.gender} ${
                 isSelected("female") ? styles.active : ""
               }`}
-              onClick={() => handleSelect("female")}
+              onClick={() => onSelect("female")}
               aria-pressed={isSelected("female")}
             >
               <img

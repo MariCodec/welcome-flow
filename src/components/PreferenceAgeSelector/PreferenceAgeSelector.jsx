@@ -1,10 +1,23 @@
 import styles from "./PreferenceAgeSelector.module.scss";
 
-const PreferenceAgeSelector = () => {
+const PreferenceAgeSelector = ({
+  agePreference,
+  birthdate,
+  onAgeChange,
+  onBirthdateChange,
+}) => {
+
+  const currentYear = new Date().getFullYear();
+  const maxYear = currentYear - 18;
+  const minYear = currentYear - 80;
+
+  const ageOptions = Array.from({ length: 80 - 18 + 1 }, (_, i) => 18 + i);
+
   return (
     <section className={styles.wrapper}>
       <h2 className={styles.title}>
-        Select your age preference<br></br> for women
+        Select your age preference
+        <br /> for women
       </h2>
       <form className={styles.form}>
         <fieldset className={styles.rangeFieldset}>
@@ -13,22 +26,43 @@ const PreferenceAgeSelector = () => {
             <label htmlFor="fromAge" className={styles.visuallyHidden}>
               From
             </label>
-            <select id="fromAge" className={styles.rangeSelect} defaultValue="">
+            <select
+              id="fromAge"
+              name="fromAge"
+              className={styles.rangeSelect}
+              value={agePreference.fromAge}
+              onChange={(e) => onAgeChange("fromAge", e.target.value)}
+              aria-label="Select the minimum age"
+            >
               <option value="" disabled>
                 From
               </option>
-              <option value="19">19</option>
-              <option value="20">20</option>
+              {ageOptions.map((age) => (
+                <option key={age} value={age}>
+                  {age}
+                </option>
+              ))}
             </select>
+
             <label htmlFor="toAge" className={styles.visuallyHidden}>
               To
             </label>
-            <select id="toAge" className={styles.rangeSelect} defaultValue="">
+            <select
+              id="toAge"
+              name="toAge"
+              className={styles.rangeSelect}
+              value={agePreference.toAge}
+              onChange={(e) => onAgeChange("toAge", e.target.value)}
+              aria-label="Select the maximum age"
+            >
               <option value="" disabled>
                 To
               </option>
-              <option value="29">29</option>
-              <option value="30">30</option>
+              {ageOptions.map((age) => (
+                <option key={age} value={age}>
+                  {age}
+                </option>
+              ))}
             </select>
           </div>
         </fieldset>
@@ -42,24 +76,63 @@ const PreferenceAgeSelector = () => {
             <label htmlFor="month" className={styles.visuallyHidden}>
               Month
             </label>
-            <select id="month" className={styles.select} defaultValue="">
+            <select
+              id="month"
+              name="month"
+              className={styles.select}
+              value={birthdate.month}
+              onChange={(e) => onBirthdateChange("month", e.target.value)}
+              aria-label="Select the month of birth"
+            >
               <option value="" disabled>
                 Month
               </option>
-              <option value="1">January</option>
-              <option value="2">February</option>
+              {[...Array(12)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {new Date(0, i).toLocaleString("en", { month: "long" })}
+                </option>
+              ))}
             </select>
+
             <label htmlFor="day" className={styles.visuallyHidden}>
               Day
             </label>
-            <select id="day" className={styles.select} defaultValue="">
+            <select
+              id="day"
+              name="day"
+              className={styles.select}
+              value={birthdate.day}
+              onChange={(e) => onBirthdateChange("day", e.target.value)}
+              aria-label="Select the day of birth"
+            >
               <option value="">Day</option>
+              {[...Array(31)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
             </select>
+
             <label htmlFor="year" className={styles.visuallyHidden}>
               Year
             </label>
-            <select id="year" className={styles.select} defaultValue="">
+            <select
+              id="year"
+              name="year"
+              className={styles.select}
+              value={birthdate.year}
+              onChange={(e) => onBirthdateChange("year", e.target.value)}
+              aria-label="Select the year of birth"
+            >
               <option value="">Year</option>
+              {[...Array(maxYear - minYear + 1)].map((_, i) => {
+                const year = maxYear - i;
+                return (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </fieldset>

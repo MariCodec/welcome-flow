@@ -16,9 +16,20 @@ const WelcomeFlow = () => {
   const [formData, setFormData] = useState({
     gender: "male",
     name: "",
-    agePreference: null,
+    password: "",
+    confirmPassword: "",
+    agePreference: {
+      fromAge: "",
+      toAge: "",
+    },
+    birthdate: {
+      month: "",
+      day: "",
+      year: "",
+    },
     email: "",
     preferContent: "hot",
+    agreement: false,
   });
 
   const updateFormData = (key, value) => {
@@ -28,7 +39,8 @@ const WelcomeFlow = () => {
     }));
   };
 
-  const handleNext = () => setStep((prev) => prev + 1);
+  const handleNext = () => { setStep((prev) => prev + 1); console.log(formData);
+   };
 
   return (
     <main className={styles.wrapper}>
@@ -46,7 +58,24 @@ const WelcomeFlow = () => {
           onChange={(name) => updateFormData("name", name)}
         />
       )}
-      {step === 3 && <PreferenceAgeSelector />}
+      {step === 3 && (
+        <PreferenceAgeSelector
+          agePreference={formData.agePreference}
+          birthdate={formData.birthdate}
+          onAgeChange={(field, value) =>
+            updateFormData("agePreference", {
+              ...formData.agePreference,
+              [field]: value,
+            })
+          }
+          onBirthdateChange={(field, value) =>
+            updateFormData("birthdate", {
+              ...formData.birthdate,
+              [field]: value,
+            })
+          }
+        />
+      )}
       {step === 4 && (
         <ContentPreference
           value={formData.email}
@@ -57,8 +86,22 @@ const WelcomeFlow = () => {
           }
         />
       )}
-      {step === 5 && <PasswordInput />}
-      {step === 6 && <AgreementCheckbox />}
+      {step === 5 && (
+        <PasswordInput
+          password={formData.password}
+          confirmPassword={formData.confirmPassword}
+          onPasswordChange={(value) => updateFormData("password", value)}
+          onConfirmPasswordChange={(value) =>
+            updateFormData("confirmPassword", value)
+          }
+        />
+      )}
+      {step === 6 && (
+        <AgreementCheckbox
+          agreement={formData.agreement}
+          onChange={(value) => updateFormData("agreement", value)}
+        />
+      )}
       {step === 6 ? (
         <Button text="JOIN NOW →" />
       ) : (
